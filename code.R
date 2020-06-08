@@ -129,14 +129,6 @@ for (i in unique(gene$colorNEW)){
                organism = "drerio",numeric_ns="")
   write.table(data.frame(mod=i,go),"moduel_enrichment.csv",append =T)}
 
-#calculate the correlation matrix and melt and remove redundancy
-correl=cor(datExpr)
-correl[!lower.tri(correl)]=NA
-correl=melt(correl)
-correl=subset(correl,!correl$value=="NA")
-names(correl)=c("gene1","gene2","correlation")
-write.csv(correl,"correlation.csv",row.names=F)
-
 
 #PGE Analysis
 # perl pge.pl -r entrez -q list
